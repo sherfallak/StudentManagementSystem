@@ -1,2 +1,2 @@
 # StudentManagementSystem
-spring Application for Student Management with basic CRUD operations
+Spring Application for Student Management System with basic CRUD operations using mySQL

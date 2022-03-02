@@ -3,12 +3,16 @@ package skylion.smsys.studentmanagementsystem.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import skylion.smsys.studentmanagementsystem.entity.Student;
+import skylion.smsys.studentmanagementsystem.repository.StudentRepository;
 import skylion.smsys.studentmanagementsystem.service.StudentService;
 
 @Controller
 public class StudentController {
-    private StudentService studentService;
+    private final StudentService studentService;
+    private StudentRepository studentRepository;
 
     public StudentController(StudentService studentService) {
         super();
@@ -30,4 +34,11 @@ public class StudentController {
         model.addAttribute("student", student);
         return "create_student";
     }
+
+    @PostMapping("/students")
+    public String saveStudent(@ModelAttribute("student") Student student) {
+        studentService.saveStudent(student);
+        return "redirect:/students";
+    }
+
 }

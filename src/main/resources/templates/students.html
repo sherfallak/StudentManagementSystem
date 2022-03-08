@@ -10,6 +10,26 @@
           crossorigin="anonymous">
 </head>
 <body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Student Management System</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/students}">Managing All the Students in Institution</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br>
+<br>
 <div class="container">
     <div class="row">
         <hi>List of Students</hi>
@@ -21,18 +41,22 @@
 
     </div>
     <table class="table table striped table bordered">
-        <thead class="table-dark"></thead>
+        <thead class="table-dark">
         <tr>
             <th>Student First Name</th>
             <th>Student Last Name</th>
             <th>Student Email</th>
             <th> Action</th>
         </tr>
+        </thead>
         <tbody>
         <tr th:each="student: ${students}"></tr>
         <th th:text="${student.firstName}"></th>
         <th th:text="${student.lastName}"></th>
         <th th:text="${student.email}"></th>
+        <td>
+            <a th:href="@{/student/edit/{id}(id=${student.id})}" class="btn btn-primary">update</a>
+        </td>
         </tbody>
     </table>
 </div>

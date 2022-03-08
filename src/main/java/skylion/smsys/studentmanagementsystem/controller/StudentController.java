@@ -20,7 +20,7 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    //Handler method to list all students
+    //Handler method to show list all students
     @GetMapping("/students")
     public String listStudents(Model model) {
         model.addAttribute("students", studentService.getAllStudent());
@@ -63,6 +63,14 @@ public class StudentController {
 
         //save student in database
         studentService.updateStudent(existingStudent);
+        return "redirect:/students";
+
+    }
+
+    //handler method to delete student
+    @GetMapping("students/{id}")
+    public String deleteStudent(@PathVariable Long id) {
+        studentService.deleteStudentById(id);
         return "redirect:/students";
 
     }

@@ -71,6 +71,7 @@ public class StudentController {
     @GetMapping("students/{id}")
     public String deleteStudent(@PathVariable Long id) {
         studentService.deleteStudentById(id);
+        System.out.println("Student deleted successfully");
         return "redirect:/students";
 
     }
